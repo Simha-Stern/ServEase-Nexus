@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # mongodb:
+  #   container_name: mongodb
+  #   image: mongo:7.0.5-rc0-jammy
+  #   volumes:
+  #     - ./mongo_data:/data/db
+  #   ports:
+  #     - "27017:27017"
+
+  node-server:
+    # image: node:slim
+    build:
+      context: ./ServEase-Nexus-BackEnd
+    develop:
+      watch:
+        - action: rebuild
+          path: ./ServEase-Nexus-BackEnd/package.json
+    volumes:
+      - ./ServEase-Nexus-BackEnd/dist:/app/dist
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network 
+    # depends_on:
+    #   - mongodb
+    # environment:
+    #   MONGO_URI: mongodb://mongodb:27017/mydatabase
+    command: nodemon --legacy-watch
+
+
+  node-react:
+    # image: node:slim
+    build:
+      context: ./ServEase-Nexus-FrontEnd
+    develop:
+      watch:
+      - action: rebuild
+        path: ./ServEase-Nexus-FrontEnd/package.json
+    tty: true
+    volumes:
+      - type: bind
+        source: ./ServEase-Nexus-FrontEnd/src
+        target: /app/src
+    ports:
+      - "7160:7160"
+    networks:
+      - app-network 
+    depends_on:
+      - node-server
+    command: npm run dev
+
+  # postgres:
+  #   image: postgres:15.5-bullseye
+  #   volumes:
+  #     - ./postgres_data:/var/lib/postgresql/data
+  #   environment:
+  #     POSTGRES_DB: mydatabase
+  #     POSTGRES_USER: myuser
+  #     POSTGRES_PASSWORD: mypassword
+
+  # redis:
+  #   image: redis:bookworm
+  #   volumes:
+  #     - ./redis_data:/data
+  #   ports:
+  #     - "6379:6379"
+
+
+networks: 
+  app-network:
