@@ -8,15 +8,11 @@ import http from 'http';
 import { config } from 'dotenv';
 import { typeDefs } from "./schemas_gql/schema.js";
 import { resolvers } from './schemas_gql/resolves.js';
-import path from 'path';
 import router from './routers/useRouter.js';
 import { connectToPg } from './conections/conectToPG.js';
 
-
-const envPath = path.resolve(__dirname, '../../../.env');
-config({ path: envPath });
-const envport = parseInt(process.env.SERVER_PORT!);
-const port = Number(envport)
+config({ path: '../../.env' });
+const port = Number(process.env.SERVER_PORT)
 console.log(port, typeof(port));
 
 const app = express();
@@ -49,5 +45,3 @@ server.start().then(async () => {
   httpServer.listen({ port });
   console.log(`🚀 Hooray! The server is up and running on port ${port}`);
 });
-
-
