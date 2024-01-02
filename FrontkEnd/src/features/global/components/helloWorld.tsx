@@ -2,11 +2,14 @@ import { useState } from 'react';
 
 function HelloWorld(): JSX.Element {
   const [data, setData] = useState<string>('1-2-3');
+  const serverPort = Number(import.meta.env.VITE_SERVER_PORT);
 
 
     const fetchData = async () => {
+      console.log(serverPort, typeof(serverPort));
+      
       try {
-        const response = await fetch('http://localhost:8081/');
+        const response = await fetch(`http://localhost:${serverPort}`);
         console.log(response);
         const result = await response.text();
         console.log(result);
