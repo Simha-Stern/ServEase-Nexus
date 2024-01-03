@@ -21,6 +21,7 @@ interface pupel {
     phone: number
     phone_password: string
     address: address
+    image?: string
     active: boolean
     is_admin: boolean
     is_deleted: boolean
