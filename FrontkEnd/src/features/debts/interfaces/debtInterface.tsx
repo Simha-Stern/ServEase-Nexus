@@ -9,3 +9,10 @@ export interface Debt {
     paymentStatus: 'Awaiting Payment' | 'Partially Paid' | 'Fully Paid';
     dueDate: number;
   }
+
+  export interface Customer {
+    id: string;
+    name: string;
+    age: number;
+    email: string;
+  }

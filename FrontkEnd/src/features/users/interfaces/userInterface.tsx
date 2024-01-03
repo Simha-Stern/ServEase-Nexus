@@ -25,7 +25,7 @@ interface pupel {
     is_admin: boolean
     is_deleted: boolean
 }
-interface costumer {
+export interface costumer {
     _id: id
     pupel: pupel
     fee: number
