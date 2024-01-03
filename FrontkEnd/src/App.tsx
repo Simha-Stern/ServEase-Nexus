@@ -1,11 +1,12 @@
 import './App.css'
-import HelloWorld from './features/global/components/helloWorld'
+import DebtPage from './features/debts/pages/debtPage'
+
 
 function App() {
 
   return (
     <>
-      <HelloWorld />
+      <DebtPage/>
     </>
   )
 }

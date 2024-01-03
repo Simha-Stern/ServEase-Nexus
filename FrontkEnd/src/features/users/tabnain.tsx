@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-interface User {
+export interface User {
   name: string;
   age: number;
   email: string;
@@ -27,7 +27,7 @@ const UserDetails: React.FC<{ user: User }> = ({ user }) => {
   `;
 
   const Details = styled.div`
-    display: none;
+    display: ${showDetails? "flex" : "none"};
     flex-direction: column;
     align-items: center;
     padding: 16px;
