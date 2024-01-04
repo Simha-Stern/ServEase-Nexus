@@ -7,6 +7,7 @@ import moreIcon from "../../../assets/images/MoreIcon.png";
 import CustomFont from "../../../assets/fonts/BlackOpsOne-Regular.ttf";
 import { user } from "../../../assets/data";
 import defultman from "../../../assets/images/defultman.jpg";
+import { debt } from "../../../assets/data";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -16,67 +17,64 @@ const GlobalStyle = createGlobalStyle`
   }
   `;
 
+// Main div for all pages.
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
 `;
 
+// Main div for this page.
 const Box = styled.div`
   width: 100vw;
   height: 100vh;
   margin: 0;
-  padding: 20px;
+  padding: 1%;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2);
   background-color: #f9f9f9;
   @media screen and (max-width: 576px) {
     padding: 5px;
+    width: 100%;
   }
 `;
 
+// header of the page.
 const AppBar = styled.div`
   background-color: #add8e6;
   color: white;
-  padding: 15px;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-  height: 10vh;
-  @media screen and (max-width: 576px) {
-    height: 8vh;
-    padding: 5px;
-  }
+  height: 10%;
 `;
 
+// A shell for the icons in the header.
 const Toolbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
 `;
 
-// const IconGrup = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-// `;
-
+// Button with an icon.
 const IconButton = styled.button`
   background-color: #add8e6;
   cursor: pointer;
-  padding: 5px;
-  margin: 5px 15px;
   border: 2px solid transparent;
   transition: border-color 0.6s ease;
+  padding: 0.3rem 1rem;
+  margin: 0 20px;
+  height: 70%;
   &:hover {
     border-color: #42a3db;
   }
   @media screen and (max-width: 576px) {
-    margin: 5px 5px;
-    padding: 3px;
+    display: none;
   }
 `;
 
+// Site title (text).
 const Typography = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
@@ -84,87 +82,46 @@ const Typography = styled.div`
   font-family: "base";
   letter-spacing: 1.5px;
   font-weight: 400;
+  text-align: center;
   @media screen and (max-width: 576px) {
     font-size: 1rem;
     margin-left: 1px;
     letter-spacing: 1px;
-    padding: 3px;
+    /* padding: 3px; */
   }
 `;
 
-const MenuIcon = styled.div`
-  width: 24px;
-  height: 24px;
-  background-image: url(${menuIcon});
-  background-size: cover;
-
-  &:hover {
-    background-image: url(${menuIcon});
-  }
-`;
-const MailIcon = styled.div`
-  width: 24px;
-  height: 24px;
-  background-image: url(${mailIcon});
-  background-size: cover;
-
-  &:hover {
-    background-image: url(${mailIcon});
-  }
-  @media screen and (max-width: 576px) {
-    display: none;
-  }
-`;
-const NotificationsIcon = styled.div`
-  width: 24px;
-  height: 24px;
-  background-image: url(${notificationsIcon});
-  background-size: cover;
-
-  &:hover {
-    background-image: url(${notificationsIcon});
-  }
-  @media screen and (max-width: 576px) {
-    display: none;
-  }
-`;
-const AccountCircle = styled.div`
-  width: 24px;
-  height: 24px;
-  background-image: url(${accountCircle});
-  background-size: cover;
-
-  &:hover {
-    background-image: url(${accountCircle});
-  }
-  @media screen and (max-width: 576px) {
-    display: none;
-  }
-`;
-const MoreIcon = styled.div`
-  width: 24px;
-  height: 24px;
-  background-image: url(${moreIcon});
-  background-size: cover;
+// More icon... for small screens.
+const MoreIcon = styled.button`
+  background-color: #add8e6;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.6s ease;
+  padding: 0.3rem 1rem;
+  margin: 0 20px;
+  height: 70%;
   display: none;
+  &:hover {
+    border-color: #42a3db;
+  }
   @media screen and (max-width: 576px) {
     display: block;
-    &:hover {
-      background-image: url(${moreIcon});
-    }
   }
 `;
 
+// Envelope for user private text.
 const CustomerDetails = styled.div`
   font-weight: bold;
-  margin-bottom: 30px;
-  font-size: 18px;
+  margin-bottom: 3%;
+
+  /* font-size: 3dvd; */
   @media screen and (max-width: 576px) {
-    margin-bottom: 10px;
-    font-size: 13px;
+    margin-bottom: 3%;
+    font-size: 3dvw;
   }
 `;
 
+// User's photo.
 const CustomerImage = styled.img`
   width: 150px;
   height: 150px;
@@ -176,17 +133,35 @@ const CustomerImage = styled.img`
   }
 `;
 
+// Frame for the page.
 const MainContent = styled.div`
-  flex: 1;
   display: flex;
+  justify-content: space-between;
   margin: 7px 0 7px 0;
+  width: 100%;
   @media screen and (max-width: 576px) {
+    flex-direction: column;
   }
 `;
 
+// Frame for user details.
+const RightContent = styled.div`
+  flex: 1;
+  display: flex;
+  margin: 7px 0 7px 0;
+`;
+
+// Frame for bebt details.
+const LeftContent = styled.div`
+  flex: 1;
+  display: flex;
+  margin: 7px 0 7px 0;
+`;
+
+// User private card.
 const CustomerProfileCard = styled.div`
-  width: 25%;
-  padding: 20px;
+  width: 25vw;
+  padding: 0.7%;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -195,18 +170,20 @@ const CustomerProfileCard = styled.div`
     width: 98vw;
     height: 25vh;
     display: flex;
-  justify-content: space-between;
-  align-items: center;
+    justify-content: space-between;
+    align-items: center;
   }
 `;
 
-const Title = styled.h4`
+// Universal title.
+const Title = styled.div`
   font-size: 1.5rem;
   font-weight: bolder;
   margin-bottom: 10px;
   font-family: "base";
   letter-spacing: 1.5px;
   font-weight: 400;
+  /* text-align: center; */
   @media screen and (max-width: 576px) {
     font-size: 1rem;
     margin-left: 0;
@@ -215,26 +192,31 @@ const Title = styled.h4`
   }
 `;
 
+// User information.
 const CustomerInfo = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
+  text-align: center;
+  height: 40vh;
 `;
 
-const UnderBar = styled.div`
+// Footer.
+const Footer = styled.div`
   background-color: #add8e6;
   color: white;
-  padding: 15px;
+  /* padding: 15px; */
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   height: 5vh;
-  @media screen and (max-width: 576px) {
-    padding: 8px;
-
-  }
+  text-align: center;
+  text-overflow: initial;
+  align-items: center;
+  justify-content: center;
 `;
 
+// Email send button.
 const EmailSend = styled.a`
   text-decoration: none;
   color: #974ac4;
@@ -242,6 +224,15 @@ const EmailSend = styled.a`
   transition: transform 0.3s ease-in-out;
   display: inline-block;
   position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media (max-width: 200px) {
+    font-size: 1em;
+  }
+  @media (max-width: 160px) {
+    font-size: 0.7em;
+  }
   &::before {
     content: "";
     position: absolute;
@@ -260,6 +251,23 @@ const EmailSend = styled.a`
   }
 `;
 
+// debt details card.
+const DebtCard = styled.div`
+  width: 70vw;
+  padding: 0.7%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  height: 78vh;
+  @media screen and (max-width: 576px) {
+    width: 98vw;
+    height: 50vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
 export default function DebtPage() {
   return (
     <PageContainer>
@@ -267,59 +275,68 @@ export default function DebtPage() {
         <AppBar>
           <Toolbar>
             <Toolbar>
-              <IconButton>
-                <MenuIcon />
+              <IconButton style={{ display: "block" }}>
+                <img src={`${menuIcon}`} style={{ margin: 0, padding: 0 }} />
               </IconButton>
               <Typography>ServEase-Nexus</Typography>
             </Toolbar>
             <Toolbar>
               <IconButton>
-                <MailIcon />
+                <img src={`${mailIcon}`} style={{ margin: 0, padding: 0 }} />
               </IconButton>
               <IconButton>
-                <NotificationsIcon />
+                <img
+                  src={`${notificationsIcon}`}
+                  style={{ margin: 0, padding: 0 }}
+                />
               </IconButton>
               <IconButton>
-                <AccountCircle />
+                <img
+                  src={`${accountCircle}`}
+                  style={{ margin: 0, padding: 0 }}
+                />
               </IconButton>
-              <IconButton>
-
-                <MoreIcon />
-              </IconButton>
+              <MoreIcon>
+                <img src={`${moreIcon}`} style={{ margin: 0, padding: 0 }} />
+              </MoreIcon>
             </Toolbar>
           </Toolbar>
         </AppBar>
         <MainContent>
-          <CustomerProfileCard>
-            <CustomerInfo>
-
-            <Title>Service provider details</Title>
-            <CustomerImage
-              src={`${user.pupel.image || defultman}`}
-              alt="Customer"
-              />
+          <RightContent>
+            <CustomerProfileCard>
+              <CustomerInfo>
+                <Title>Service provider details</Title>
+                <CustomerImage
+                  src={`${user.pupel.image || defultman}`}
+                  alt="Customer"
+                />
               </CustomerInfo>
-            <CustomerInfo>
-              <CustomerDetails>
-                Name:{" "}
-                {`${user.pupel.name.first_name} ${user.pupel.name.last_name}`}
-              </CustomerDetails>
-              <CustomerDetails>
-                Contact info: {`${user.pupel.phone} ${user.pupel.email}`}
-              </CustomerDetails>
-              <CustomerDetails>
-                Address:{" "}
-                {`${user.pupel.address.streat} ${user.pupel.address.house_number} ${user.pupel.address.city}`}
-              </CustomerDetails>
-              <CustomerDetails>
-                <EmailSend href={`mailto:${user.pupel.email}`}>
-                  Send a mail to {user.pupel.name.first_name}
-                </EmailSend>
-              </CustomerDetails>
-            </CustomerInfo>
-          </CustomerProfileCard>
+              <CustomerInfo>
+                <CustomerDetails>
+                  Name:{" "}
+                  {`${user.pupel.name.first_name} ${user.pupel.name.last_name}`}
+                </CustomerDetails>
+                <CustomerDetails>
+                  Contact info: {`${user.pupel.phone} ${user.pupel.email}`}
+                </CustomerDetails>
+                <CustomerDetails>
+                  Address:{" "}
+                  {`${user.pupel.address.streat} ${user.pupel.address.house_number} ${user.pupel.address.city}`}
+                </CustomerDetails>
+                <CustomerDetails>
+                  <EmailSend href={`mailto:${user.pupel.email}`}>
+                    Send a mail to {user.pupel.name.first_name}
+                  </EmailSend>
+                </CustomerDetails>
+              </CustomerInfo>
+            </CustomerProfileCard>
+          </RightContent>
+          <LeftContent>
+            <DebtCard>hghghghgh</DebtCard>
+          </LeftContent>
         </MainContent>
-        <UnderBar>Kodcode Web development</UnderBar>
+        <Footer>Kodcode Web development</Footer>
       </Box>
     </PageContainer>
   );
