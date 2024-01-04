@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import menuIcon from "../../../assets/images/menuIcon.png";
 import mailIcon from "../../../assets/images/mailIcon.png";
 import notificationsIcon from "../../../assets/images/notificationsIcon.png";
@@ -8,6 +8,7 @@ import CustomFont from "../../../assets/fonts/BlackOpsOne-Regular.ttf";
 import { user } from "../../../assets/data";
 import defultman from "../../../assets/images/defultman.jpg";
 import { debt } from "../../../assets/data";
+import { createContext, useContext, useState } from "react";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -93,19 +94,22 @@ const Typography = styled.div`
 
 // More icon... for small screens.
 const MoreIcon = styled.button`
-  background-color: #add8e6;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border-color 0.6s ease;
-  padding: 0.3rem 1rem;
-  margin: 0 20px;
-  height: 70%;
   display: none;
   &:hover {
     border-color: #42a3db;
   }
   @media screen and (max-width: 576px) {
     display: block;
+    background-color: #add8e6;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.6s ease;
+    padding: 0.3rem 1rem;
+    margin: 0 20px;
+    height: 70%;
+    &:hover {
+      border-color: #42a3db;
+    }
   }
 `;
 
@@ -199,7 +203,7 @@ const CustomerInfo = styled.div`
   /* justify-content: space-between; */
   align-items: center;
   text-align: center;
-  height: 40vh;
+  /* height: 40vh; */
 `;
 
 // Footer.
@@ -268,6 +272,57 @@ const DebtCard = styled.div`
   }
 `;
 
+const VisibilityContext = createContext({
+  visibleComponent: 'toolbar', // Default value for visibility context
+  toggleVisibility: () => {}, // Default toggle function
+});
+
+const VisibilityController = () => {
+  const { visibleComponent, toggleVisibility } = useContext(VisibilityContext);
+
+  return (
+    <ThemeProvider theme={{ visibleComponent }}>
+      {visibleComponent === 'toolbar' ? (
+        <Toolbar>
+          {/* Your content for Toolbar */}
+          <TypographyContent />
+          <ToggleButton onClick={toggleVisibility}>Toggle</ToggleButton>
+        </Toolbar>
+      ) : (
+        <Typography>
+          {/* Your content for Typography */}
+          <TypographyContent />
+          <ToggleButton onClick={toggleVisibility}>Toggle</ToggleButton>
+        </Typography>
+      )}
+    </ThemeProvider>
+  );
+};
+
+// Component to handle shared content between Toolbar and Typography
+const TypographyContent = () => {
+  // Place any shared content between Toolbar and Typography here
+  return <div>Shared Content</div>;
+};
+
+// Component to manage visibility and render Toolbar or Typography
+const YourComponent = () => {
+  const [visibleComponent, setVisibleComponent] = useState('toolbar');
+
+  const toggleVisibility = () => {
+    setVisibleComponent((prev) => (prev === 'toolbar' ? 'typography' : 'toolbar'));
+  };
+
+  return (
+    <VisibilityContext.Provider value={{ visibleComponent, toggleVisibility }}>
+      <div>
+        {/* Render the component based on visibility */}
+        <VisibilityController />
+      </div>
+    </VisibilityContext.Provider>
+  );
+};
+
 export default function DebtPage() {
   return (
     <PageContainer>
@@ -296,9 +351,12 @@ export default function DebtPage() {
                   style={{ margin: 0, padding: 0 }}
                 />
               </IconButton>
+              <div>
+
               <MoreIcon>
                 <img src={`${moreIcon}`} style={{ margin: 0, padding: 0 }} />
               </MoreIcon>
+              </div>
             </Toolbar>
           </Toolbar>
         </AppBar>
