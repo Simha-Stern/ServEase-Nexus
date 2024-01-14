@@ -1,14 +1,8 @@
-import { Matches, MinLength, IsString, IsNotEmpty, IsBoolean } from '@nestjs/class-validator';
+import { Matches, MinLength, IsString, IsNotEmpty, IsBoolean, IsOptional } from '@nestjs/class-validator';
 import { InputType, Field } from '@nestjs/graphql';
 import NameDTO from './name.dto';
-
-const passwordRegEx =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
-
-const phoneRegEx = /^(0\d{8}|05\d{8})$/;
-
-const emailRegEx =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?: \.[a-zA-Z0-9-]+)*$/;
+import { phonePassRegEx, emailRegEx, passwordRegEx, phoneRegEx } from './RegEx';
+import ImageDTO from './image.dto';
 
 @InputType()
 export class CreateUserInput {
@@ -33,12 +27,23 @@ export class CreateUserInput {
   @Matches(phoneRegEx, { message: 'Invalid phone number format' })
   @Field()
   phone: string;
+  
+  @Matches(phonePassRegEx, { message: 'Invalid phone password format' })
+  @Field()
+  phone_password: string;
 
+  @Field()
+  image?: ImageDTO;
+
+  @IsOptional()
   @IsNotEmpty()
-  @Field()
-  active: boolean;
-
   @IsBoolean()
-  @Field()
-  manager: boolean;
+  @Field(() => Boolean, { defaultValue: true })
+  active?: boolean;
+
+  @IsOptional()
+  @IsNotEmpty()
+  @IsBoolean()
+  @Field(() => Boolean, { defaultValue: false })
+  isAdmin?: boolean;
 }

@@ -1,30 +1,49 @@
 import { InputType, Field } from '@nestjs/graphql';
 import ImageDTO from './image.dto';
 import NameDTO from './name.dto';
+import { IsOptional, IsNotEmpty, IsBoolean, IsString, Matches, MinLength } from '@nestjs/class-validator';
+import { emailRegEx, passwordRegEx, phoneRegEx, phonePassRegEx } from './RegEx';
 
 @InputType()
 export class UpdateUserInput {
-  @Field({ nullable: true })
+  @Matches(emailRegEx, {
+    message: 'Invalid email format',
+  })
+  @Field()
   email?: string;
 
-  @Field({ nullable: true })
+  @Matches(passwordRegEx, { message: 'Password is not strong enough' })
+  @MinLength(8, { message: 'Password must be at least 8 characters long' })
+  @Field()
   password?: string;
 
-  @Field({ nullable: true })
+  @IsString()
+  @MinLength(4, { message: 'Name must be at least 4 letters long.' })
+  @IsNotEmpty()
+  @Field()
   name?: NameDTO;
 
-  @Field({ nullable: true })
-  phone?: string;
-
+  @IsString()
+  @Matches(phoneRegEx, { message: 'Invalid phone number format' })
   @Field()
-  phone_password: string;
+  phone?: string;
+  
+  @Matches(phonePassRegEx, { message: 'Invalid phone password format' })
+  @Field()
+  phone_password?: string;
 
   @Field()
   image?: ImageDTO;
 
-  @Field(() => Boolean, { nullable: true })
+  @IsOptional()
+  @IsNotEmpty()
+  @IsBoolean()
+  @Field(() => Boolean, { defaultValue: true })
   active?: boolean;
 
-  @Field(() => Boolean, { nullable: true })
-  manager?: boolean;
+  @IsOptional()
+  @IsNotEmpty()
+  @IsBoolean()
+  @Field(() => Boolean, { defaultValue: false })
+  isAdmin?: boolean;
 }
