@@ -9,6 +9,7 @@ import { user } from "../../../assets/data";
 import defultman from "../../../assets/images/defultman.jpg";
 import { debt } from "../../../assets/data";
 import { createContext, useContext, useState } from "react";
+import { HeaderContext } from "../hooks/context";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -272,58 +273,11 @@ const DebtCard = styled.div`
   }
 `;
 
-const VisibilityContext = createContext({
-  visibleComponent: 'toolbar', // Default value for visibility context
-  toggleVisibility: () => {}, // Default toggle function
-});
-
-const VisibilityController = () => {
-  const { visibleComponent, toggleVisibility } = useContext(VisibilityContext);
-
-  return (
-    <ThemeProvider theme={{ visibleComponent }}>
-      {visibleComponent === 'toolbar' ? (
-        <Toolbar>
-          {/* Your content for Toolbar */}
-          <TypographyContent />
-          <ToggleButton onClick={toggleVisibility}>Toggle</ToggleButton>
-        </Toolbar>
-      ) : (
-        <Typography>
-          {/* Your content for Typography */}
-          <TypographyContent />
-          <ToggleButton onClick={toggleVisibility}>Toggle</ToggleButton>
-        </Typography>
-      )}
-    </ThemeProvider>
-  );
-};
-
-// Component to handle shared content between Toolbar and Typography
-const TypographyContent = () => {
-  // Place any shared content between Toolbar and Typography here
-  return <div>Shared Content</div>;
-};
-
-// Component to manage visibility and render Toolbar or Typography
-const YourComponent = () => {
-  const [visibleComponent, setVisibleComponent] = useState('toolbar');
-
-  const toggleVisibility = () => {
-    setVisibleComponent((prev) => (prev === 'toolbar' ? 'typography' : 'toolbar'));
-  };
-
-  return (
-    <VisibilityContext.Provider value={{ visibleComponent, toggleVisibility }}>
-      <div>
-        {/* Render the component based on visibility */}
-        <VisibilityController />
-      </div>
-    </VisibilityContext.Provider>
-  );
-};
-
 export default function DebtPage() {
+  const context = useContext(HeaderContext);
+  if (!context) return null;
+  const { MoreIcons, setMoreIcons } = context;
+
   return (
     <PageContainer>
       <Box>
@@ -333,7 +287,26 @@ export default function DebtPage() {
               <IconButton style={{ display: "block" }}>
                 <img src={`${menuIcon}`} style={{ margin: 0, padding: 0 }} />
               </IconButton>
-              <Typography>ServEase-Nexus</Typography>
+              {MoreIcons ? <Typography>ServEase-Nexus</Typography> :<Toolbar>
+              <IconButton style={{display:"block"}}>
+                <img src={`${mailIcon}`} style={{ margin: 0, padding: 0 }} />
+              </IconButton>
+              <IconButton style={{display:"block"}}>
+                <img
+                  src={`${notificationsIcon}`}
+                  style={{ margin: 0, padding: 0 }}
+                />
+              </IconButton>
+              <IconButton style={{display:"block"}}>
+                <img
+                  src={`${accountCircle}`}
+                  style={{ margin: 0, padding: 0 }}
+                />
+              </IconButton>
+              <MoreIcon onClick={() => setMoreIcons(!MoreIcons)}>
+                  <img src={`${moreIcon}`} style={{ margin: 0, padding: 0 }} />
+                </MoreIcon>
+                </Toolbar>}
             </Toolbar>
             <Toolbar>
               <IconButton>
@@ -352,10 +325,9 @@ export default function DebtPage() {
                 />
               </IconButton>
               <div>
-
-              <MoreIcon>
-                <img src={`${moreIcon}`} style={{ margin: 0, padding: 0 }} />
-              </MoreIcon>
+              <MoreIcon onClick={() => setMoreIcons(!MoreIcons)}>
+                  <img src={`${moreIcon}`} style={{ margin: 0, padding: 0 }} />
+                </MoreIcon>
               </div>
             </Toolbar>
           </Toolbar>
