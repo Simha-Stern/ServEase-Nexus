@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import ImageDTO from '../dto/image.dto';
-import NameDTO from '../dto/name.dto';
+import ImageDTO, { MyImage } from '../dto/image.dto';
+import NameDTO, { MyName } from '../dto/name.dto';
 
 @Entity()
 export class Users {
@@ -13,8 +13,8 @@ export class Users {
   @Column()
   password: string;
 
-  @Column()
-  name: NameDTO;
+  @Column({ type: 'jsonb', nullable: true })
+  name: MyName;
 
   @Column()
   phone: string;
@@ -22,8 +22,8 @@ export class Users {
   @Column()
   phone_password: string;
 
-  @Column()
-  image?: ImageDTO;
+  @Column({ type: 'jsonb', nullable: true })
+  image?: MyImage;
 
   @Column({ default: true })
   active: boolean;

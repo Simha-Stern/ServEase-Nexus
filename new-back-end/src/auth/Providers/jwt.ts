@@ -1,8 +1,21 @@
 import jwt from 'jsonwebtoken';
-import config from 'config';
+import { UserType } from 'src/users/dto/user.schema';
 
-const key = config.get('JWT_KEY');
+let key = 'my_private_key';
 
-const generateAuthToken = user => {
-    const { _id, isAdmin, }
+const generateAuthToken = (user: UserType) => {
+    const { id, isAdmin, active } = user;
+    const token = jwt.sign({ id, isAdmin, active }, key);
+    return token;
 }
+
+const verifyAuthToken = (tokenFromClient: string) => {
+    try {
+        const userData = jwt.verify(tokenFromClient, key);
+        return userData;
+    } catch (err) {
+        return null;
+    }
+}
+
+export { verifyAuthToken, generateAuthToken };

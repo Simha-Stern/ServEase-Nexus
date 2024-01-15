@@ -25,6 +25,10 @@ export class UsersService {
   async findOne(id: string): Promise<Users | undefined> {
     return this.userRepository.findOne({ where: { id } });
   }
+
+  async findByUsernameAndPassword(email: string, password: string): Promise<Users | undefined>{
+    return this.userRepository.findOne({ where: { email, password } });
+  }
   
 
   async update(id: string, updateUserInput: UpdateUserInput): Promise<Users> {

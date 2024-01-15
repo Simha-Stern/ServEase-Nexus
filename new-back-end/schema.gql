@@ -2,14 +2,27 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type MyImage {
+  url: String!
+  alt: String!
+}
+
+type MyName {
+  first: String!
+  middle: String!
+  last: String!
+}
+
 type UserType {
   id: String!
   email: String!
   password: String!
-  name: String!
+  name: MyName!
   phone: String!
+  phone_password: String!
+  image: MyImage
   active: Boolean!
-  manager: Boolean!
+  isAdmin: Boolean!
 }
 
 type DebtType {
@@ -29,36 +42,53 @@ scalar DateTime
 
 type Query {
   users: [UserType!]!
-  user(id: Int!): UserType!
+  user(id: String!): UserType!
   debts: [DebtType!]!
   debt(id: Int!): DebtType!
+  verifyToken(token: String!, id: String!): Boolean!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): UserType!
-  updateUser(updateUserInput: UpdateUserInput!, id: Int!): UserType!
-  removeUser(id: Int!): UserType!
+  updateUser(updateUserInput: UpdateUserInput!, id: String!): UserType!
+  removeUser(id: String!): UserType!
   createDebt(createDebtInput: CreateDebtInput!): DebtType!
   updateDebt(updateDebtInput: UpdateDebtInput!, id: Int!): DebtType!
   removeDebt(id: String!): DebtType!
+  loginUser(username: String!, password: String!): String!
 }
 
 input CreateUserInput {
   email: String!
   password: String!
-  name: String!
+  name: InputName!
   phone: String!
-  active: Boolean!
-  manager: Boolean!
+  phone_password: String!
+  image: InputImage!
+  active: Boolean! = true
+  isAdmin: Boolean! = false
+}
+
+input InputName {
+  first: String!
+  middle: String
+  last: String!
+}
+
+input InputImage {
+  url: String!
+  alt: String!
 }
 
 input UpdateUserInput {
-  email: String
-  password: String
-  name: String
-  phone: String
-  active: Boolean
-  manager: Boolean
+  email: String!
+  password: String!
+  name: InputName!
+  phone: String!
+  phone_password: String!
+  image: InputImage!
+  active: Boolean! = true
+  isAdmin: Boolean! = false
 }
 
 input CreateDebtInput {

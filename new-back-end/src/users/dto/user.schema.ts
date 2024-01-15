@@ -1,7 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import NameDTO from './name.dto';
+import NameDTO, { MyName } from './name.dto';
 import { Matches } from '@nestjs/class-validator';
-import ImageDTO from './image.dto';
+import ImageDTO, { MyImage } from './image.dto';
 
 @ObjectType()
 export class UserType {
@@ -14,8 +14,8 @@ export class UserType {
   @Field()
   password: string;
 
-  @Field(() => NameDTO)
-  name: NameDTO;
+  @Field(() => MyName)
+  name: MyName;
 
   @Field()
   phone: string;
@@ -23,8 +23,8 @@ export class UserType {
   @Field()
   phone_password: string;
 
-  @Field()
-  image?: ImageDTO;
+  @Field(() => MyImage, { nullable: true })
+  image?: MyImage;
 
   @Field()
   active: boolean;

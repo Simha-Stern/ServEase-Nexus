@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from './users/entities/user.entity';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { DebtsModule } from './debts/debts.module';
+import { LoginModule } from './login/login.module';
 import { ApolloServerPluginLandingPageLocalDefault as winner}  from '@apollo/server/plugin/landingPage/default';
 
 
@@ -31,7 +32,8 @@ import { ApolloServerPluginLandingPageLocalDefault as winner}  from '@apollo/ser
       logging: true,
     }),
     UsersModule,
-    DebtsModule
+    DebtsModule,
+    LoginModule
   ],
   controllers: [AppController],
   providers: [AppService],

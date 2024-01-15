@@ -1,6 +1,6 @@
 import { InputType, Field } from '@nestjs/graphql';
-import ImageDTO from './image.dto';
-import NameDTO from './name.dto';
+import ImageDTO, { InputImage, MyImage } from './image.dto';
+import NameDTO, { InputName, MyName } from './name.dto';
 import { IsOptional, IsNotEmpty, IsBoolean, IsString, Matches, MinLength } from '@nestjs/class-validator';
 import { emailRegEx, passwordRegEx, phoneRegEx, phonePassRegEx } from './RegEx';
 
@@ -21,7 +21,7 @@ export class UpdateUserInput {
   @MinLength(4, { message: 'Name must be at least 4 letters long.' })
   @IsNotEmpty()
   @Field()
-  name?: NameDTO;
+  name?: InputName;
 
   @IsString()
   @Matches(phoneRegEx, { message: 'Invalid phone number format' })
@@ -33,7 +33,7 @@ export class UpdateUserInput {
   phone_password?: string;
 
   @Field()
-  image?: ImageDTO;
+  image?: InputImage;
 
   @IsOptional()
   @IsNotEmpty()
