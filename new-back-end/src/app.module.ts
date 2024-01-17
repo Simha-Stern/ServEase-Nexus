@@ -4,11 +4,14 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Users } from './users/entities/user.entity';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { DebtsModule } from './debts/debts.module';
 import { LoginModule } from './login/login.module';
 import { ApolloServerPluginLandingPageLocalDefault as winner}  from '@apollo/server/plugin/landingPage/default';
+import { ConfigModule } from '@nestjs/config';
+import { CacheModule } from '@nestjs/cache-manager';
+// import { CacheModule } from './redis/redis.module';
+import * as redisStore from 'cache-manager-redis-store';
 
 
 
@@ -31,9 +34,17 @@ import { ApolloServerPluginLandingPageLocalDefault as winner}  from '@apollo/ser
       synchronize: true,
       logging: true,
     }),
+    ConfigModule.forRoot(),
+    CacheModule.register({
+      isGlobal: true,
+      store: redisStore,
+      host: 'localhost',
+      port: 6379,
+    }),
     UsersModule,
     DebtsModule,
-    LoginModule
+    LoginModule,
+    // CacheModule
   ],
   controllers: [AppController],
   providers: [AppService],

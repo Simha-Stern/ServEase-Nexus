@@ -7,7 +7,7 @@ export class DebtType {
   id: string;
 
   @Field()
-  paymentMonth: Date;
+  paymentMonth: string;
 
   @Field()
   serviceId: string;
@@ -22,5 +22,5 @@ export class DebtType {
   paymentStatus: PaymentStatus;
 
   @Field()
-  dueDay: Date;
+  dueDay: string;
 }

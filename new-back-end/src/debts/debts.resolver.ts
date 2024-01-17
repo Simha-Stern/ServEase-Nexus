@@ -20,13 +20,13 @@ export class DebtsResolver {
   }
 
   @Query(() => DebtType, { name: 'debt' })
-  findOne(@Args('id', { type: () => Int }) id: string) {
+  findOne(@Args('id') id: string) {
     return this.debtsService.findOne(id);
   }
 
   @Mutation(() => DebtType)
   updateDebt(@Args('updateDebtInput') updateDebtInput: UpdateDebtInput,
-  @Args('id', { type: () => Int }) id: string
+  @Args('id') id: string
   ) {
     return this.debtsService.update(id, updateDebtInput);
   }

@@ -6,7 +6,7 @@ export class Debt {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ unique: true })
+  @Column()
   paymentMonth: Date;
 
   @Column()
@@ -24,4 +24,3 @@ export class Debt {
   @Column()
   dueDay: Date;
 }
-

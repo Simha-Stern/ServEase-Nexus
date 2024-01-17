@@ -35,7 +35,7 @@ export class LoginService {
     try {
       const decodedUser = verifyAuthToken(token) as JwtPayload;
       if (typeof decodedUser.id !== 'string' || decodedUser.id !== id) {
-        console.error('Token verification failed: Invalid user ID לא מתאים ');
+        console.error('Token verification failed: Invalid user ID');
         return false;
       }
       console.log(decodedUser);
