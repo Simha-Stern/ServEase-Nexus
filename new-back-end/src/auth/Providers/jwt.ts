@@ -1,7 +1,10 @@
 import jwt from 'jsonwebtoken';
 import { UserType } from 'src/users/dto/user.schema';
+import { config } from 'dotenv';
 
-let key = 'my_private_key';
+config({ path: '../../../.env' });
+
+let key = process.env.JWT_PRIVATE_KEY;
 
 const generateAuthToken = (user: UserType) => {
     const { id, isAdmin, active } = user;

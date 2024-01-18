@@ -12,8 +12,9 @@ import { ConfigModule } from '@nestjs/config';
 import { CacheModule } from '@nestjs/cache-manager';
 // import { CacheModule } from './redis/redis.module';
 import * as redisStore from 'cache-manager-redis-store';
+import { config } from 'dotenv';
 
-
+config({ path: '../.env' });
 
 @Module({
   imports: [
@@ -25,11 +26,11 @@ import * as redisStore from 'cache-manager-redis-store';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      username: 'postgres',
-      password: 'A@a66442',
-      port: 5432,
-      database: "users",
+      host: process.env.PG_HOST,
+      username: process.env.PG_USERNAME,
+      password: process.env.PG_PASSWORD,
+      port: Number(process.env.PG_PORT),
+      database: process.env.PG_DATABASE,
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
       logging: true,
@@ -38,8 +39,8 @@ import * as redisStore from 'cache-manager-redis-store';
     CacheModule.register({
       isGlobal: true,
       store: redisStore,
-      host: 'localhost',
-      port: 6379,
+      host: process.env.REDIS_HOST,
+      port: Number(process.env.REDIS_PORT),
     }),
     UsersModule,
     DebtsModule,

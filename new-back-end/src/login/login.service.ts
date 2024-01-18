@@ -1,11 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { JwtPayload } from 'jsonwebtoken';
 import { generateAuthToken, verifyAuthToken } from 'src/auth/Providers/jwt';
+// import { DebtsService } from 'src/debts/debts.service';
 import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class LoginService {
-    constructor(private readonly userRepository: UsersService) {}
+    constructor(private readonly userRepository: UsersService,
+      // private readonly cacheService: DebtsService,
+      ) {}
 
   async loginUser(username: string, password: string): Promise<string | null> {
     // Perform authentication logic, validate user credentials, etc.
