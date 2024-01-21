@@ -1,4 +1,4 @@
-import {costumer} from '../features/users/interfaces/userInterface'
+import {costumer} from '../features/admins/interfaces/userInterface'
 import man from '../assets/images/man.jpg'
 import { Debt } from '../features/debts/interfaces/debtInterface'
 

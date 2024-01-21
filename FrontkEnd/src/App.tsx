@@ -1,17 +1,19 @@
-import './App.css'
-import HeaderContextProvider from './features/debts/hooks/context'
-import DebtPage from './features/debts/pages/debtPage'
+import { ThemeProvider } from "styled-components";
+import "./App.css";
+import theme from "./styled-components/theme";
+import GlobalStyles from "./styled-components/GlobalStyles";
+import DebtPage from "./features/debts/pages/xxxxxxxx";
 
-
-function App() {
-
+function App () {
   return (
-    <>
-    <HeaderContextProvider>
-      <DebtPage/>
-    </HeaderContextProvider>
-    </>
-  )
+    <div>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+          <DebtPage/>
+      </ThemeProvider>
+    </div>
+  );
 }
 
-export default App
+export default App;
+
