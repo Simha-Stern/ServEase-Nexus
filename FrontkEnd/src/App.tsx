@@ -1,19 +1,13 @@
-import { ThemeProvider } from "styled-components";
-import "./App.css";
-import theme from "./styled-components/theme";
-import GlobalStyles from "./styled-components/GlobalStyles";
-import DebtPage from "./features/debts/pages/xxxxxxxx";
+// import "./App.css";
+import HomePage from "./features/servants/pages/homePage";
+import { BoxDiv } from "./styled-components/styled-components";
 
-function App () {
+function App() {
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-          <DebtPage/>
-      </ThemeProvider>
-    </div>
+    <BoxDiv>
+      <HomePage />
+    </BoxDiv>
   );
 }
 
 export default App;
-

@@ -26,7 +26,7 @@ export interface servant {
     paymentMethods: string;        // add
   }
   
-  export const users: servant[] = [
+  export const servantList: servant[] = [
     {
       id: "c79728cd-0102-4797-90c1-c34279304c6f",
       email: "aaa@aa.aa",

@@ -4,21 +4,71 @@ import styled from "styled-components";
 import { Link } from "react-router-dom"; // If using React Router
 import { darken } from "polished";
 
-export const Box = styled.div`
-  width: 100vw;
-  height: 100vh;
+export const BoxDiv = styled.div`
+  width: 98vw;
+  height: 98vh;
   margin: 0;
-  padding: 1%;
+  padding: 0;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2);
   background-color: #f9f9f9;
-  @media screen and (max-width: 576px) {
-    padding: 5px;
-    width: 100%;
-  }
+`;
+export const HomePageDiv = styled.div`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+export const HeaderDiv = styled.div`
+  padding: 1%;
+  background-color: #add8e6;
+  color: white;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  height: 12%;
+`;
+export const MainDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 78%;
+`;
+export const SidebarDiv = styled.div`
+  text-align: center;
+  width: 50%;
+`;
+export const ContentDiv = styled.div`
+  text-align: center;
+  width: 50%;
+`;
+export const DropDownDiv = styled.div`
+`;
+export const DropDownItem = styled.li`
+  list-style: none;
+  `;
+
+export const FooterDiv = styled.div`
+  background-color: #add8e6;
+  color: white;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  height: 10%;
+  text-align: center;
 `;
 
+export const SideList = styled.ul`
+`;
+
+export const SideListItem = styled.li`
+  list-style: none;
+`;
+export const InfosList = styled.ul`
+`;
+
+export const InfosListItem = styled.li`
+  list-style: none;
+`;
 export const Container = styled.div`
   margin: 0 auto;
   /* padding: 20px; */
@@ -124,7 +174,8 @@ export const CustomerProfileCardContainer = styled.div`
   @media screen and (max-width: 576px) {
     margin-bottom: 3%;
     font-size: 3dvw;
-  }`;
+  }
+`;
 
 export const CustomerImage = styled.img`
   width: 150px;
@@ -134,7 +185,8 @@ export const CustomerImage = styled.img`
   @media screen and (max-width: 576px) {
     width: 100px;
     height: 100px;
-  }`;
+  }
+`;
 
 export const Title = styled.h2`
   /* Add styling for the title */
@@ -149,17 +201,20 @@ export const MainContentContainer = styled.div`
   width: 100%;
   @media screen and (max-width: 576px) {
     flex-direction: column;
-  }`;
+  }
+`;
 
 export const RightContent = styled.div`
   flex: 1;
   display: flex;
-  margin: 7px 0 7px 0;`;
+  margin: 7px 0 7px 0;
+`;
 
 export const LeftContent = styled.div`
   flex: 1;
   display: flex;
-  margin: 7px 0 7px 0;`;
+  margin: 7px 0 7px 0;
+`;
 
 export const FooterContainer = styled.footer`
   background-color: #add8e6;
@@ -171,4 +226,5 @@ export const FooterContainer = styled.footer`
   text-align: center;
   text-overflow: initial;
   align-items: center;
-  justify-content: center;`;
+  justify-content: center;
+`;

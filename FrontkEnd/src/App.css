@@ -1,5 +1,162 @@
+
+/* Import the Open Sans font from Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700&subset=latin,greek');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  --background-light: #F3F4F8;
+  --background-dark: #2F3032;
+  --border-light: #d9dae3;
+  --border-dark: #2c2d2e;
+  --primary-color: #004983;
+}
+@function translate($x, $y) {
+  @return translate($x, $y);
+}
+
+@keyframes moshpit-1 {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-2px, -2px);
+  }
+}
+
+@keyframes moshpit-2 {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes moshpit-3 {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-2px, 2px);
+  }
+}
+
+@keyframes moshpit-4 {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(2px, 2px);
+  }
+}
+
+* {
+  font-family: var(--font-family);
+}
+
+html {
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  height: 100%;
+  background: var(--background-light);
+}
+/* 
+
+Header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: white;
+  box-shadow: inset 0 -1px 0 0 var(--border-light);
+}
+
+Sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 180px;
+  background: var(--primary-color);
+}
+
+.sidebar .brand {
+  padding: 20px 20px 5px;
+}
+
+.sidebar .brand a {
+  display: block;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 2.5rem;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  text-decoration: none !important;
+  line-height: 62px;
+  color: #7a9ab6;
+  background: #003b69;
+  border-radius: 100%;
+}
+
+button.app-menu__button {
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 15px;
+  padding: 14px;
+  background: none;
+  border: none;
+  border-radius: 100%;
+  outline: none !important;
+}
+
+.menu-collapse {
+  display: block;
+  width: 100%;
+  padding: 6px 20px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-align: left;
+  color: #012c4e;
+  background: none;
+  border: none;
+  outline: none !important;
+  cursor: pointer;
+}
+
+.menu-collapse .caret {
+  margin-right: 6px;
+  transform-origin: center center;
+  transition: transform 0.2s ease-in;
+}
+
+.menu-collapse.collapsed .caret {
+  transform: rotate(-90deg);
+}
+
+.collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.collapse.in {
+  max-height: 1000px; 
+} */
