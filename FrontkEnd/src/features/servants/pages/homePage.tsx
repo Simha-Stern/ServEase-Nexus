@@ -1,8 +1,8 @@
 // Example of a simple React home page component
 
-import Header from "../components/header";
-import Footer from "../components/footer";
-import Main from "../components/main";
+import Header from "../components/frame/header";
+import Footer from "../components/frame/footer";
+import Main from "../components/frame/main";
 import { HomePageDiv } from "../../../styled-components/styled-components";
 import UserContextProvider from "../hooks/servantContext";
 

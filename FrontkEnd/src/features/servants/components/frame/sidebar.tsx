@@ -1,8 +1,18 @@
-
-import { SideList, SideListItem, SidebarDiv } from "../../../styled-components/styled-components";
+import {
+  SideList,
+  SideListItem,
+  SidebarDiv,
+} from "../../../../styled-components/styled-components";
 import DropDown from "./dropDown";
+type OptionChangeHandler = (option: string) => void;
 
-const Sidebar = (): JSX.Element => {
+interface Props {
+  onOptionChange: OptionChangeHandler;
+}
+const Sidebar: React.FC<Props> = ({ onOptionChange }): JSX.Element => {
+  const handleOptionChange = (option: string) => {
+    onOptionChange(option);
+  };
 
   return (
     <SidebarDiv>
@@ -10,8 +20,8 @@ const Sidebar = (): JSX.Element => {
       <p>This is the sidebar</p>
       <div>
         <SideList>
-          <SideListItem>
-            <a href="#">שירותים חודשיים</a>
+          <SideListItem onClick={() => handleOptionChange("services")}>
+            <a href="/services">שירותים חודשיים</a>
           </SideListItem>
           <SideListItem>
             <a href="#">לקוחות</a>

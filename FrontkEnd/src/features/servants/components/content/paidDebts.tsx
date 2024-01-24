@@ -1,5 +1,5 @@
-import React, { memo } from 'react'
-import { Debt } from '../interfaces/debtinterface'
+import React, { memo } from "react";
+import { Debt } from "../../interfaces/debtinterface";
 
 interface DebtsProps {
   debts: Debt[] | undefined;
@@ -13,14 +13,12 @@ const PaidDebts: React.FC<DebtsProps> = ({ debts }) => {
         <div key={debt.id}>
           <h3>
             {debt.serviceId}
-            <span>
-              {debt.paymentStatus}
-            </span>
+            <span>{debt.paymentStatus}</span>
           </h3>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default memo(PaidDebts)
+export default memo(PaidDebts);
