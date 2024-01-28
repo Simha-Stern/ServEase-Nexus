@@ -1,10 +1,15 @@
 const ROUTES = {
   ROOT: "/",
-  ABOUT: "/about",
-  SIGNUP: "/signup",
-  SERVICES: "/services",
-  // USER_PROFILE: "/user-info",
-  // EDIT_USER: "edit-user",
+  LOGIN: "/login",
+  ADMINS: "/admins",
+  SERVANTS: {
+    ROOT: "/servants",
+    SERVICES: "/servants/services",
+    CUSTOMERS: "/servants/customers",
+    COMMISSIONS: "/servants/commissions",
+    DEFINITIONS: "/servants/definitions",
+  },
+  CUSTOMERS: "/customers",
 };
 
 export default ROUTES;

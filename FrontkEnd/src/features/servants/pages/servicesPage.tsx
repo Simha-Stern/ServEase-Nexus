@@ -1,16 +1,14 @@
-import React from "react";
-import { HomePageDiv } from "../../../styled-components/styled-components";
-import Footer from "../components/frame/footer";
-import Header from "../components/frame/header";
-import Main from "../components/frame/main";
+import Layout from "../components/layout/layout";
+import UserContextProvider from "../hooks/servantContext";
 
 const ServicesPage = () => {
   return (
-    <HomePageDiv>
-      <Header />
-      <Main />
-      <Footer />
-    </HomePageDiv>
+    <Layout>
+      <UserContextProvider>
+        <h1>Content</h1>
+        <p>This is the content</p>
+      </UserContextProvider>
+    </Layout>
   );
 };
 

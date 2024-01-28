@@ -42,11 +42,10 @@ export const ContentDiv = styled.div`
   text-align: center;
   width: 50%;
 `;
-export const DropDownDiv = styled.div`
-`;
+export const DropDownDiv = styled.ul``;
 export const DropDownItem = styled.li`
   list-style: none;
-  `;
+`;
 
 export const FooterDiv = styled.div`
   background-color: #add8e6;
@@ -57,14 +56,12 @@ export const FooterDiv = styled.div`
   text-align: center;
 `;
 
-export const SideList = styled.ul`
-`;
+export const SideList = styled.ul``;
 
 export const SideListItem = styled.li`
   list-style: none;
 `;
-export const InfosList = styled.ul`
-`;
+export const InfosList = styled.ul``;
 
 export const InfosListItem = styled.li`
   list-style: none;

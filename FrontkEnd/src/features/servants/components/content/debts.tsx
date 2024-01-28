@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import PaidDebts from "./paidDebts";
 import PendingDebts from "./pendingDebts";
 import { DebtContextType, DebtContext } from "../../hooks/debtsContext";
@@ -8,17 +8,29 @@ import CreditedAmount from "./creditedAmount";
 function Debts() {
   const { Debt, setDebt } = useContext<DebtContextType>(DebtContext);
   useEffect(() => {
+    console.log("Debts component rendered with data:", Debt);
     fetchData(setDebt);
   }, []);
   return (
-    <div>
-      <PendingDebts
-        debts={Debt?.filter((debt) => debt.paymentStatus !== "fully paid")}
-      />
-      <PaidDebts
-        debts={Debt?.filter((debt) => debt.paymentStatus === "fully paid")}
-      ></PaidDebts>
-      <CreditedAmount debts={Debt}></CreditedAmount>
+    <div data-cy="debts-component">
+      {Debt ? (
+        <>
+          <PendingDebts
+            debts={Debt?.filter((debt) => debt.paymentStatus !== "fully paid")}
+            data-cy="pending-debts"
+          />
+          <PaidDebts
+            debts={Debt?.filter((debt) => debt.paymentStatus === "fully paid")}
+            data-cy="paid-debts"
+          ></PaidDebts>
+          <CreditedAmount
+            debts={Debt}
+            data-cy="credited-amount"
+          ></CreditedAmount>
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }
