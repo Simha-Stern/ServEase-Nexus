@@ -15,6 +15,9 @@ const Sidebar: React.FC = (): JSX.Element => {
       <div>
         <SideList>
           <SideListItem>
+            <Link to={ROUTES.SERVANTS.ROOT}>ראשי</Link>
+          </SideListItem>
+          <SideListItem>
             <Link to={ROUTES.SERVANTS.SERVICES}>שירותים חודשיים</Link>
           </SideListItem>
           <SideListItem>

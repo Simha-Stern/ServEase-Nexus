@@ -5,6 +5,7 @@ import {
   SideListItem,
 } from "../../../../../styled-components/styled-components";
 import { Link } from "react-router-dom";
+import ROUTES from "../../../../../router/models/routes";
 
 const DropDown = (): JSX.Element => {
   const [collapsed, setCollapsed] = useState(true);
@@ -15,17 +16,19 @@ const DropDown = (): JSX.Element => {
   return (
     <SideListItem>
       <Link to="#" onClick={handleToggle}>
-        תשלומים{" "}
+        תשלומים
       </Link>
       <DropDownDiv style={{ display: collapsed ? "none" : "block" }}>
         <DropDownItem>
-          <Link to="#">תשלומים לגביה אישית </Link>
+          <Link to={ROUTES.SERVANTS.PAYMENTS.MONTH}>תשלומים בגביה החודש</Link>
         </DropDownItem>
         <DropDownItem>
-          <Link to="#">תשלומים בגביה החודש</Link>
+          <Link to={ROUTES.SERVANTS.PAYMENTS.COLLECTION}>
+            תשלומים לגביה אישית{" "}
+          </Link>
         </DropDownItem>
         <DropDownItem>
-          <Link to="#">תשלומים דוח</Link>
+          <Link to={ROUTES.SERVANTS.PAYMENTS.REPORT}>תשלומים דוח</Link>
         </DropDownItem>
       </DropDownDiv>
     </SideListItem>

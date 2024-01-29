@@ -6,7 +6,9 @@ import { darken } from "polished";
 
 export const BoxDiv = styled.div`
   width: 98vw;
-  height: 98vh;
+  min-height: 98vh;
+  display: flex;
+  align-items: stretch;
   margin: 0;
   padding: 0;
   border: 1px solid #ccc;
@@ -15,10 +17,11 @@ export const BoxDiv = styled.div`
   background-color: #f9f9f9;
 `;
 export const HomePageDiv = styled.div`
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
 `;
 export const HeaderDiv = styled.div`
   padding: 1%;
@@ -26,34 +29,52 @@ export const HeaderDiv = styled.div`
   color: white;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-  height: 12%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: #000000 solid 1px; */
 `;
 export const MainDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 78%;
+  /* min-height: 100%; */
+  border: #000000 solid 1px;
 `;
-export const SidebarDiv = styled.div`
-  text-align: center;
-  width: 50%;
-`;
-export const ContentDiv = styled.div`
-  text-align: center;
-  width: 50%;
-`;
-export const DropDownDiv = styled.ul``;
-export const DropDownItem = styled.li`
-  list-style: none;
-`;
-
 export const FooterDiv = styled.div`
+  position: static;
+  bottom: 0;
   background-color: #add8e6;
   color: white;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-  height: 10%;
+  bottom: 0;
+  height: 90px;
   text-align: center;
+  /* border: #000000 solid 1px; */
+`;
+export const SidebarDiv = styled.div`
+  /* position: fixed; */
+  /* top: 12vh; */
+  /* left: 0; */
+  height: 50em;
+  /* display: block; */
+  /* z-index: 10; */
+  /* transition: transform 0.3s ease-in-out; */
+  width: 30%;
+  text-align: center;
+  border: #000000 solid 1px;
+`;
+export const ContentDiv = styled.div`
+  text-align: center;
+  height: 50em;
+  width: 70%;
+  border: #000000 solid 1px;
+`;
+export const DropDownDiv = styled.ul``;
+export const DropDownItem = styled.li`
+  list-style: none;
 `;
 
 export const SideList = styled.ul``;

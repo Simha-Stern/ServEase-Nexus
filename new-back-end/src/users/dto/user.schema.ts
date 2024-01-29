@@ -31,4 +31,7 @@ export class UserType {
 
   @Field()
   isAdmin: boolean;
+
+  // @Field()
+  // isServant: boolean;
 }

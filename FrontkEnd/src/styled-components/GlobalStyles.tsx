@@ -1,4 +1,3 @@
-
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
@@ -9,9 +8,6 @@ const GlobalStyles = createGlobalStyle`
     color: ${(props) => props.theme.colors.text};
     margin: 0;
     padding: 0;
-    /* overflow-x: hidden;
-    overflow-y: scroll;
-    -webkit-font-smoothing: antialiased; */
     }
 `;
 
